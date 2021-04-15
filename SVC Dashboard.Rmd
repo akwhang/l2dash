@@ -32,7 +32,7 @@ knitr::kable(avgRatio("All"), align = 'c')
 ```
 
 Column {data-width=500}
------------------------------------------------------------------------
+---------------------------------------------
 
 ### Top 10 SVCs Last Month
 
@@ -41,7 +41,7 @@ topResLastMonth("All")
 ```
 SVCs in 2021
 ```{r}
-knitr::kable(resBreakdown("All"))
+knitr::kable(resBreakdown("All"), align = 'c')
 
 ```
 
@@ -75,7 +75,7 @@ topResLastMonth("Enterprise")
 ```
 SVCs in 2021
 ```{r}
-knitr::kable(resBreakdown("Enterprise"))
+knitr::kable(resBreakdown("Enterprise"), align = 'c')
 ```
 
 
@@ -108,7 +108,7 @@ topResLastMonth("Mid Market")
 ```
 SVCs in 2021
 ```{r}
-knitr::kable(resBreakdown("Mid Market"))
+knitr::kable(resBreakdown("Mid Market"), align = 'c')
 ```
 
 
@@ -141,7 +141,7 @@ topResLastMonth("Small")
 ```
 SVCs in 2021
 ```{r}
-knitr::kable(resBreakdown("Small"))
+knitr::kable(resBreakdown("Small"), align = 'c')
 ```
 
 
@@ -174,7 +174,7 @@ topResLastMonth("NetX")
 ```
 SVCs in 2021
 ```{r}
-knitr::kable(resBreakdown("NetX"))
+knitr::kable(resBreakdown("NetX"), align = 'c')
 ```
 
 Five Star
@@ -206,21 +206,21 @@ topResLastMonth("Five Star")
 ```
 SVCs in 2021
 ```{r}
-knitr::kable(resBreakdown("Five Star"))
+knitr::kable(resBreakdown("Five Star"), align = 'c')
 ```
 
-Not Coded
-===================================== 
-Column {data-width=350}
------------------------------------------------------------------------
-### Not Coded Resolution or Subresolution
-```{r}
-knitr::kable(na_per)
-```
+<!-- Not Coded -->
+<!-- =====================================  -->
+<!-- Column {data-width=350} -->
+<!-- ----------------------------------------------------------------------- -->
+<!-- ### Not Coded Resolution or Subresolution -->
+<!-- ```{r} -->
+<!-- knitr::kable(na_per) -->
+<!-- ``` -->
 
-Column {data-width=350}
------------------------------------------------------------------------
-### Recently Not Coded
-```{r}
-knitr::kable(recent_na)
-```
+<!-- Column {data-width=350} -->
+<!-- ----------------------------------------------------------------------- -->
+<!-- ### Recently Not Coded -->
+<!-- ```{r} -->
+<!-- knitr::kable(recent_na) -->
+<!-- ``` -->
