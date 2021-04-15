@@ -21,14 +21,20 @@ Column {data-width=350}
 totalRatioPlot("All")
 ```
 
-### 
+### Averages per month
 
-```{r}
-knitr::kable(totalRatio("All"), align = 'c')
+<!-- ```{r} -->
+<!-- knitr::kable(totalRatio("All"), align = 'c') -->
+<!-- ``` -->
+
+```{r, fig.height=1}
+knitr::kable(avgRatio("All"), align = 'c')
 ```
 
+### Cases and 10*SVCs over time.
+
 ```{r}
-knitr::kable(avgRatio("All"), align = 'c')
+totalSVCCasePlot("All")
 ```
 
 Column {data-width=500}
@@ -42,7 +48,6 @@ topResLastMonth("All")
 SVCs in 2021
 ```{r}
 knitr::kable(resBreakdown("All"), align = 'c')
-
 ```
 
 Enterprise
@@ -54,16 +59,22 @@ Column {data-width=350}
 ### SVCs per 100 Cases
 ```{r}
 totalRatioPlot("Enterprise")
-
 ```
 
-###
-```{r}
-knitr::kable(totalRatio("Enterprise"), align = 'c')
-```
+### Averages per month
 
-```{r}
+<!-- ```{r} -->
+<!-- knitr::kable(totalRatio("Enterprise"), align = 'c') -->
+<!-- ``` -->
+
+```{r, fig.height=1}
 knitr::kable(avgRatio("Enterprise"), align = 'c')
+```
+
+### Cases and 10*SVCs over time.
+
+```{r}
+totalSVCCasePlot("Enterprise")
 ```
 
 Column {data-width=500}
@@ -71,7 +82,6 @@ Column {data-width=500}
 ### Top 10 SVCs Last Month
 ```{r}
 topResLastMonth("Enterprise")
-
 ```
 SVCs in 2021
 ```{r}
@@ -87,24 +97,30 @@ Column {data-width=350}
 ### SVCs per 100 Cases
 ```{r}
 totalRatioPlot("Mid Market")
-
 ```
 
-###
-```{r}
-knitr::kable(totalRatio("Mid Market"), align = 'c')
-```
+### Averages per month
 
-```{r}
+<!-- ```{r} -->
+<!-- knitr::kable(totalRatio("Mid Market"), align = 'c') -->
+<!-- ``` -->
+
+```{r, fig.height=1}
 knitr::kable(avgRatio("Mid Market"), align = 'c')
 ```
+
+### Cases and 10*SVCs over time.
+
+```{r}
+totalSVCCasePlot("Mid Market")
+```
+
 
 Column {data-width=500}
 -----------------------------------------------------------------------
 ### Top 10 SVCs Last Month
 ```{r}
 topResLastMonth("Mid Market")
-
 ```
 SVCs in 2021
 ```{r}
@@ -120,24 +136,30 @@ Column {data-width=350}
 ### SVCs per 100 Cases
 ```{r}
 totalRatioPlot("Small")
-
 ```
 
-###
-```{r}
-knitr::kable(totalRatio("Small"), align = 'c')
-```
+### Averages per month
 
-```{r}
+<!-- ```{r} -->
+<!-- knitr::kable(totalRatio("Small"), align = 'c') -->
+<!-- ``` -->
+
+```{r, fig.height=1}
 knitr::kable(avgRatio("Small"), align = 'c')
 ```
+
+### Cases and 10*SVCs over time.
+
+```{r}
+totalSVCCasePlot("Small")
+```
+
 
 Column {data-width=500}
 -----------------------------------------------------------------------
 ### Top 10 SVCs Last Month
 ```{r}
 topResLastMonth("Small")
-
 ```
 SVCs in 2021
 ```{r}
@@ -153,24 +175,30 @@ Column {data-width=350}
 ### SVCs per 100 Cases
 ```{r}
 totalRatioPlot("NetX")
-
 ```
 
-###
-```{r}
-knitr::kable(totalRatio("NetX"), align = 'c')
-```
+### Averages per month
 
-```{r}
+<!-- ```{r} -->
+<!-- knitr::kable(totalRatio("NetX"), align = 'c') -->
+<!-- ``` -->
+
+```{r, fig.height=1}
 knitr::kable(avgRatio("NetX"), align = 'c')
 ```
+
+### Cases and 10*SVCs over time.
+
+```{r}
+totalSVCCasePlot("NetX")
+```
+
 
 Column {data-width=500}
 -----------------------------------------------------------------------
 ### Top 10 SVCs Last Month
 ```{r}
 topResLastMonth("NetX")
-
 ```
 SVCs in 2021
 ```{r}
@@ -185,29 +213,37 @@ Column {data-width=350}
 ### SVCs per 100 Cases
 ```{r}
 totalRatioPlot("Five Star")
-
 ```
 
-###
-```{r}
-knitr::kable(totalRatio("Five Star"), align = 'c')
-```
+### Averages per month
 
-```{r}
+<!-- ```{r} -->
+<!-- knitr::kable(totalRatio("Five Star"), align = 'c') -->
+<!-- ``` -->
+
+```{r, fig.height=1}
 knitr::kable(avgRatio("Five Star"), align = 'c')
 ```
+
+### Cases and 10*SVCs over time.
+
+```{r}
+totalSVCCasePlot("Five Star")
+```
+
 
 Column {data-width=500}
 -----------------------------------------------------------------------
 ### Top 10 SVCs Last Month
 ```{r}
 topResLastMonth("Five Star")
-
 ```
 SVCs in 2021
 ```{r}
 knitr::kable(resBreakdown("Five Star"), align = 'c')
 ```
+
+<!-- Need to figure out method to select quarters and compare resolution numbers between two quarters -->
 
 <!-- Not Coded -->
 <!-- =====================================  -->

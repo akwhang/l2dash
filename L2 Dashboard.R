@@ -9,10 +9,6 @@ library(DT)
 
 `%notin%` <- Negate(`%in%`)
 
-## Dates
-firstDay <- "2020-01-01"
-lastMonth <- "2021-01-01"
-endDate <- "2021-03-01"
 ## Analysts by segment teams
 teams <- read_csv("analyst teams.csv") %>%
   unite(Name, First:Last, sep = " ") %>%
@@ -31,9 +27,11 @@ svc_report <- read_csv("report1618431548373.csv") %>%
          date = 'Service Timecard: Created Date',
          l2 = 'Assigned To') %>%
   left_join(teams, by= c("analyst" = "Name")) %>%
-  filter(!is.na(Team)) %>%
   mutate(date = mdy(date),
-         date = floor_date(date, "month"))
+         date = floor_date(date, "month")) %>%
+  filter(!is.na(Team),
+         date > '2020-07-31',
+         date < '2021-04-01')
 
 ## CASE REPORT LOAD
 case_raw <- read_csv('report1618431706451.csv') %>%
@@ -42,7 +40,8 @@ case_raw <- read_csv('report1618431706451.csv') %>%
          date = 'Opened Date') %>%
   mutate(date = mdy(date),
          date = floor_date(date, "month")) %>%
-  filter(date > '2020-07-31')%>%
+  filter(date > '2020-07-31',
+         date < '2021-04-01') %>%
   semi_join(teams, by=c("analyst" = "Name")) %>%
   left_join(teams, by=c("analyst" = "Name"))
 
@@ -110,6 +109,37 @@ totalRatioPlot <- function(filter_var) {
   ggplotly(p)
 }
 
+totalSVCCasePlot <- function(filter_var) {
+  
+  svc_total_all <- svc_report %>% 
+    filter(Team == filter_var | filter_var == dummy) %>%
+    group_by(date) %>%
+    mutate(svc_total = 10*n()) %>% 
+    select(date, svc_total) %>% 
+    distinct() %>% 
+    arrange(date) 
+  
+  case_total_all <- case_raw %>%
+    filter(Team == filter_var | filter_var == dummy) %>%
+    group_by(date) %>%
+    mutate(case_total = n()) %>% 
+    select(date, case_total) %>% 
+    distinct() %>% 
+    arrange(date)
+  
+  svccase_all <- case_total_all %>%
+    left_join(svc_total_all) %>% 
+    arrange(date)
+  
+  p <- ggplot(svccase_all, aes(date)) + 
+    geom_line(aes(y= svc_total, colour = "svc_total")) +
+    geom_line(aes(y= case_total, colour = "case_total")) +
+    scale_x_date(date_labels = "%m-%Y",date_breaks = "1 month", name = "Month") +
+    ylab("") +
+    theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=1),legend.position = "none")
+  
+  ggplotly(p)
+}
 avgRatio <- function(filter_var) {
   svc_total_all <- svc_report %>% 
     filter(Team == filter_var | filter_var == dummy) %>%
@@ -131,13 +161,13 @@ avgRatio <- function(filter_var) {
     left_join(svc_total_all) %>% 
     mutate(ratio = round(svc_total/case_total*100, digits=3)) %>%
     arrange(desc(ratio)) %>%
-    rename("Total Cases" = "case_total",
-           "Total SVCs" = "svc_total") %>%
+    rename("Cases" = "case_total",
+           "SVCs" = "svc_total") %>%
     arrange(date) %>%
     ungroup() %>%
     summarise(across(everything(),mean)) %>%
-    mutate(date = "") %>%
-    rename(Average = date)
+    select(Cases, SVCs)
+
 }
 
 #top resolution plot
